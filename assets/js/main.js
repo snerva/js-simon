@@ -10,10 +10,12 @@
 //if userNumbers == randomNumbers totalNumbers++ e stampa a video userNumbers e totale
 const domEl = document.querySelector('.numbers');
 
-//setTimeout( timeout);
+setTimeout(videoNumbers, 3000);
 
 const randomNumbList = numbersGenerator(1, 100);
 console.log(randomNumbList);
+domEl.innerText = randomNumbList;
+
 
 function numbersGenerator(min, max){
     const randomNumbList = [];
@@ -30,5 +32,5 @@ function generateRandomNumber(min, max){
 }
 
 function videoNumbers(){
-     
+    domEl.innerText = '';
 }
