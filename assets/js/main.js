@@ -8,4 +8,27 @@
 //setTimeout di 30000 che toglie i randomNumbers e fa vedere i prompt()
 //salvare userNumbers inseriti
 //if userNumbers == randomNumbers totalNumbers++ e stampa a video userNumbers e totale
+const domEl = document.querySelector('.numbers');
 
+//setTimeout( timeout);
+
+const randomNumbList = numbersGenerator(1, 100);
+console.log(randomNumbList);
+
+function numbersGenerator(min, max){
+    const randomNumbList = [];
+    while (randomNumbList.length !== 5){
+        const numbEl = generateRandomNumber(min, max);
+        if (!randomNumbList.includes(numbEl)){
+          randomNumbList.push(numbEl);
+        }
+    }
+    return randomNumbList
+}
+function generateRandomNumber(min, max){
+    return Math.floor(Math.random() * (max - min +1)) +min;
+}
+
+function videoNumbers(){
+     
+}
