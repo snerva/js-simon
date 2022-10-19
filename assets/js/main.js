@@ -9,12 +9,19 @@
 //salvare userNumbers inseriti
 //if userNumbers == randomNumbers totalNumbers++ e stampa a video userNumbers e totale
 const domEl = document.querySelector('.numbers');
+let questionNumb = 5;
 
-setTimeout(videoNumbers, 3000);
+const videoNumbers = setTimeout(numbers, 3000);
 
 const randomNumbList = numbersGenerator(1, 100);
 console.log(randomNumbList);
 domEl.innerText = randomNumbList;
+
+setTimeout(promptNumbers, 4000);
+
+const userNumbers = promptNumbers();
+console.log(userNumbers);
+
 
 
 function numbersGenerator(min, max){
@@ -27,10 +34,25 @@ function numbersGenerator(min, max){
     }
     return randomNumbList
 }
+
 function generateRandomNumber(min, max){
     return Math.floor(Math.random() * (max - min +1)) +min;
 }
 
-function videoNumbers(){
+function numbers(){
     domEl.innerText = '';
 }
+
+function promptNumbers(){
+    const userNumbers = [];
+    for (let i=0; i < questionNumb; i++){
+        const userNumbEl = prompt('Inserisci un numero da 1 a 100');
+        console.log(userNumbEl);
+        userNumbers.push(userNumbEl);
+        
+    }
+    return userNumbers
+}
+
+
+
