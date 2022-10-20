@@ -11,18 +11,8 @@
 const domEl = document.querySelector('.numbers');
 let questionNumb = 5;
 
-const videoNumbers = setTimeout(numbers, 3000);
-
 const randomNumbList = numbersGenerator(1, 100);
 console.log(randomNumbList);
-domEl.innerText = randomNumbList;
-
-setTimeout(promptNumbers, 4000);
-
-const userNumbers = promptNumbers();
-console.log(userNumbers);
-
-
 
 function numbersGenerator(min, max){
     const randomNumbList = [];
@@ -38,21 +28,42 @@ function numbersGenerator(min, max){
 function generateRandomNumber(min, max){
     return Math.floor(Math.random() * (max - min +1)) +min;
 }
+domEl.innerHTML = randomNumbList.toString();
 
-function numbers(){
-    domEl.innerText = '';
-}
+const numbersNone = setTimeout(function(){
+    domEl.innerHTML = '';
+    
+    setTimeout(function(){
+        const userNumbers = prompNumbers();
+        console.log(userNumbers);
+        
+        const rightNumbers = checkNumbers();
+        console.log(rightNumbers);
+        domEl.innerHTML = 'Numeri trovati' + rightNumbers.toString() + 'Totale numeri' + rightNumbers.length;
+    }, 2000)
 
-function promptNumbers(){
+
+}, 3000);
+
+function prompNumbers(){
     const userNumbers = [];
     for (let i=0; i < questionNumb; i++){
-        const userNumbEl = prompt('Inserisci un numero da 1 a 100');
-        console.log(userNumbEl);
-        userNumbers.push(userNumbEl);
-        
+       userNumbers.push(prompt('Inserisci un numero da 1 a 100')) 
     }
     return userNumbers
 }
+
+function checkNumbers(){
+    const rightNumbers = [];
+    for (let i=0; i < userNumbers.length; i++){
+        const numb = userNumbers[i];
+        if (randomNumbList.includes(numb)){
+            rightNumbers.push(numb);
+        }
+    }
+    return rightNumbers
+}
+
 
 
 
